@@ -20,35 +20,42 @@ GeoJSON.Geometry = {
 GeoJSON.Point = {
   'type'     : { type: String, default: "Point" },
   coordinates: [
-    {type: "Number"}
+    {type: Number}
   ]
 }
 
 GeoJSON.MultiPoint = {
   'type'     : { type: String, default: "MultiPoint" },
   coordinates: [
-    {type: "Array"}
+    {type: Array}
   ]
 }
+
+GeoJSON.LineString = {
+  'type'     : { type: String, default: "LineString" },
+  coordinates: [
+    {type: String}
+  ]
+};
 
 GeoJSON.MultiLineString = {
   'type'     : { type: String, default: "MultiLineString" },
   coordinates: [
-    {type: "Array"}
+    {type: Array}
   ]
 }
 
 GeoJSON.Polygon = {
   'type'     : { type: String, default: "Polygon" },
   coordinates: [
-    {type: "Array"}
+    {type: Array}
   ]
 }
 
 GeoJSON.MultiPolygon = {
   'type'     : { type: String, default: "MultiPolygon" },
   coordinates: [
-    {type: "Array"}
+    {type: Array}
   ]
 }
 
@@ -61,28 +68,12 @@ GeoJSON.Feature = {
   id        : { type: "String" },
   'type'    : { type: String, default: "Feature" },
   geometry  : GeoJSON.Geometry,
-  properties: {type: "Object"}
+  properties: {type: Object}
 }
 
 GeoJSON.FeatureCollection = {
   'type'  : { type: String, default: "FeatureCollection" },
   features: [ GeoJSON.Feature ]
-}
-
-GeoJSON.requiredAddressFeature = {
-  id        : { type: "String" },
-  'type'    : { type: String, default: "Feature", required:true },
-  geometry  : {
-    'type':{type:String,default:"Point",required:true},
-    coordinates:{type:"Array",required:true}
-  },
-  properties: {type: "Object"}
-}
-
-
-GeoJSON.validatePointCoordinates = function(value,message){
-  "use strict";
-  var msg = message || "Must provide valid coordinates for Point Geometry";
 }
 
 
